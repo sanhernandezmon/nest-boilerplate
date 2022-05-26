@@ -10,15 +10,10 @@
 <p align="center">
   <a href="https://docs.docker.com/" target="blank"><img src="https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png" height="60" alt="Docker logo" /></a>
   <a href="https://github.com/features/actions" target="blank"><img src="https://avatars.githubusercontent.com/u/44036562" height="60" alt="GitHub Actions logo" /></a>
-  <a href="https://circleci.com/" target="blank"><img src="https://www.vectorlogo.zone/logos/circleci/circleci-icon.svg" height="60" alt="CircleCI logo" /></a>
-  <a href="https://www.travis-ci.com/" target="blank"><img src="https://www.vectorlogo.zone/logos/travis-ci/travis-ci-icon.svg" height="60" alt="Travis CI logo" /></a>
 </p>
 
 # Nest 8 - Boilerplate
 
-[![GitHub CI](https://github.com/smarlhens/nest-boilerplate/workflows/CI/badge.svg)](https://github.com/smarlhens/nest-boilerplate/actions?query=workflow%3ACI)
-[![CircleCI](https://circleci.com/gh/smarlhens/nest-boilerplate.svg?style=svg)](https://circleci.com/gh/smarlhens/nest-boilerplate)
-[![Build Status](https://travis-ci.com/smarlhens/nest-boilerplate.svg?branch=master)](https://travis-ci.com/smarlhens/nest-boilerplate)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
@@ -76,13 +71,13 @@ What things you need to install the software and how to install them :
 1. Clone the git repository
 
    ```bash
-   git clone https://github.com/smarlhens/nest7-boilerplate.git
+   git clone https://github.com/ahelord/nest-boilerplate.git
    ```
 
 1. Go into the project directory
 
    ```bash
-   cd nest7-boilerplate/
+   cd nest-boilerplate/
    ```
 
 1. Checkout working branch
@@ -115,15 +110,6 @@ What things you need to install the software and how to install them :
 
 ## What's in the box ?
 
-### CircleCI
-
-[CircleCI](https://circleci.com/) automates your software builds, tests, and deployments.
-
-**CircleCI pipeline file**: [`.circleci/config.yml`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.circleci/config.yml).
-
-For more configuration options and details, see the [configuration docs](https://circleci.com/docs/).
-
----
 
 ### Commitizen
 
@@ -176,13 +162,6 @@ For more configuration options and details, see the [configuration docs](https:/
 
 ---
 
-### GitHub Actions
-
-[GitHub Actions](https://github.com/features/actions) makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.
-
-**CI workflow file**: [`.github/workflows/ci.yml`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.github/workflows/ci.yml).
-
----
 
 ### Husky
 
@@ -211,15 +190,6 @@ For more configuration options and details, see the [configuration docs](https:/
 
 ---
 
-### Travis CI
-
-[Travis CI](https://travis-ci.com/) is a hosted continuous integration service used to build and test software projects hosted at GitHub.
-
-**Travis build file**: [`.travis.yml`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.travis.yml).
-
-For more configuration options and details, see the [configuration docs](https://docs.travis-ci.com/).
-
----
 
 ## Running the app
 
