@@ -1,10 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { ConfigService } from '@nestjs/config';
+import './config/dotenv.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  const configService = app.get(ConfigService);
   const options = new DocumentBuilder()
     .setTitle('Hello World example')
     .setDescription('The Hello World API description')
@@ -12,8 +14,9 @@ async function bootstrap() {
     .addTag('hello-world')
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('docs', app, document);
 
-  await app.listen(3000);
+  await app.listen(configService.get<number>('config.port'));
 }
+
 bootstrap();

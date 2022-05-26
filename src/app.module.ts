@@ -1,38 +1,37 @@
 import { Module } from '@nestjs/common';
+// Modules
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+
+// Controllers
 import { AppController } from './app.controller';
+
+// Services
 import { AppService } from './app.service';
-import { DatabaseModule } from './database/database.module';
-import { PostgresTypeOrmConfigService } from './database/services/postgres-type-orm-config.service';
-import configuration from './config/configuration';
-import * as Joi from 'joi';
+
+// Configs
+import appConfig from './config/app.config';
+import TypeormConfig from './config/typeorm.config';
+import { CommonModule } from './common/common.module';
+import { TodosModule } from './todos/todos.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration],
-      validationSchema: Joi.object({
-        port: Joi.number().default(3000),
-        database: {
-          host: Joi.string().default('localhost'),
-          port: Joi.number().default(5432),
-          username: Joi.string(),
-          password: Joi.string(),
-          database: Joi.string(),
-        },
-        orm: {
-          entities: Joi.array(),
-          synchronize: Joi.boolean().default(false),
-        },
-      }),
-      validationOptions: {
-        allowUnknown: true,
-        abortEarly: true,
+      isGlobal: true,
+      load: [appConfig],
+      envFilePath: '.env',
+    }),
+    TypeOrmModule.forRootAsync({
+      useFactory: async function () {
+        console.log(TypeormConfig);
+        return TypeormConfig as TypeOrmModuleOptions;
       },
     }),
-    DatabaseModule,
+    CommonModule,
+    TodosModule,
   ],
   controllers: [AppController],
-  providers: [AppService, PostgresTypeOrmConfigService],
+  providers: [AppService],
 })
 export class AppModule {}

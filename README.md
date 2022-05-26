@@ -100,7 +100,7 @@ What things you need to install the software and how to install them :
 1. Copy `.env.dist` to `.env`
 
    ```bash
-   cp .env.dist .env
+   cp .env .env
    ```
 
 1. Replace the values of the variables with your own
