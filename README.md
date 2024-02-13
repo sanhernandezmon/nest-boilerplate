@@ -78,7 +78,6 @@ What things you need to install the software and how to install them :
    ```bash
    cd nest-boilerplate/
    ```
-   ```
 3. Install NPM dependencies
 
    ```bash
