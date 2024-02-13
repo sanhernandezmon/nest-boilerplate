@@ -1,23 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTodoDto } from '../dto/create-todo.dto';
 import { UpdateTodoDto } from '../dto/update-todo.dto';
-import { TodosRepository } from '../repositories/todos.repository';
+import { TodosRepository } from '../../infrastructure/database/repositories/todos.repository';
 
 @Injectable()
 export class TodosService {
   constructor(private readonly todosRepository: TodosRepository) {}
 
   create(createTodoDto: CreateTodoDto) {
-    return this.todosRepository.save(createTodoDto);
+    return this.todosRepository.getInstance().save(createTodoDto);
   }
 
-  findAll() {
-    return this.todosRepository.find();
+  async findAll() {
+    return await this.todosRepository.findCustom();
   }
 
   async findOne(id: number) {
-    return await this.todosRepository.findOne({
-      id,
+    return await this.todosRepository.getInstance().findOne({
+      where: {
+        id,
+      },
     });
   }
 
@@ -26,6 +28,6 @@ export class TodosService {
   }
 
   remove(id: number) {
-    return this.todosRepository.delete({ id });
+    return this.todosRepository.getInstance().delete({ id });
   }
 }

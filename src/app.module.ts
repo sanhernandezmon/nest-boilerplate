@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 // Modules
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
 // Controllers
@@ -11,9 +10,9 @@ import { AppService } from './app.service';
 
 // Configs
 import appConfig from './config/app.config';
-import TypeormConfig from './config/typeorm.config';
 import { CommonModule } from './common/common.module';
 import { TodosModule } from './todos/todos.module';
+import { InfrastructureModule } from './infrastructure/infrastructure.module';
 
 @Module({
   imports: [
@@ -22,12 +21,13 @@ import { TodosModule } from './todos/todos.module';
       load: [appConfig],
       envFilePath: '.env',
     }),
-    TypeOrmModule.forRootAsync({
+    /*    TypeOrmModule.forRootAsync({
       useFactory: async function () {
         console.log(TypeormConfig);
         return TypeormConfig as TypeOrmModuleOptions;
       },
-    }),
+    }),*/
+    InfrastructureModule,
     CommonModule,
     TodosModule,
   ],

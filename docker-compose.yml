@@ -1,9 +1,9 @@
-version: '3.5'
+version: '3.8'
 
 services:
   postgres:
-    container_name: postgres_container
-    image: postgres:14.3-alpine3.15
+    container_name: todos_postgres
+    image: postgres:16.1-alpine3.19
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -12,27 +12,40 @@ services:
     volumes:
       - postgres:/data/postgres
     ports:
-      - '5433:5432'
+      - '5434:5432'
     networks:
-      - postgres
+      - todos-network
     restart: unless-stopped
 
   pgadmin:
-    container_name: pgadmin_container
-    image: dpage/pgadmin4:6.9
+    container_name: todos_pgadmin
+    image: dpage/pgadmin4:8.3
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@example.com
       PGADMIN_DEFAULT_PASSWORD: admin
     volumes:
       - pgadmin:/root/.pgadmin
     ports:
-      - '5051:80'
+      - '5052:80'
     networks:
-      - postgres
+      - todos-network
     restart: unless-stopped
-
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    image: todos_nodejs_image
+    container_name: todos_nodejs
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - '${APP_PORT}:${APP_PORT}'
+    networks:
+      - todos-network
 networks:
-  postgres:
+  todos-network:
     driver: bridge
 
 volumes:

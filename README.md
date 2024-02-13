@@ -12,17 +12,17 @@
   <a href="https://github.com/features/actions" target="blank"><img src="https://avatars.githubusercontent.com/u/44036562" height="60" alt="GitHub Actions logo" /></a>
 </p>
 
-# Nest 8 - Boilerplate
+# Nest 10.x - Boilerplate
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![GitHub issues](https://img.shields.io/github/issues/smarlhens/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/smarlhens/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/pulls)
-[![GitHub stars](https://img.shields.io/github/stars/smarlhens/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/smarlhens/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/network)
-[![GitHub contributors](https://img.shields.io/github/contributors/smarlhens/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/graphs/contributors)
-[![GitHub license](https://img.shields.io/github/license/smarlhens/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate)
+[![GitHub issues](https://img.shields.io/github/issues/ahelord/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/ahelord/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/pulls)
+[![GitHub stars](https://img.shields.io/github/stars/ahelord/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/ahelord/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/network)
+[![GitHub contributors](https://img.shields.io/github/contributors/ahelord/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate/graphs/contributors)
+[![GitHub license](https://img.shields.io/github/license/ahelord/nest-boilerplate)](https://github.com/ahelord/nest-boilerplate)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ahelord/nest-boilerplate)
 ![GitHub repo size](https://img.shields.io/github/repo-size/ahelord/nest-boilerplate)
 
@@ -41,7 +41,6 @@
   - [Husky](#husky)
   - [Lint-staged](#lint-staged)
   - [Prettier](#prettier)
-  - [Travis CI](#travis-ci)
 - [Running the app](#running-the-app)
 - [Code scaffolding](#code-scaffolding)
 - [Build](#build)
@@ -95,7 +94,7 @@ What things you need to install the software and how to install them :
 1. Copy `.env.dist` to `.env`
 
    ```bash
-   cp .env .env
+   cp .env-example .env
    ```
 
 1. Replace the values of the variables with your own
@@ -119,7 +118,7 @@ Use `git cz` instead of `git commit` to use commitizen.
 
 [![Add and commit with Commitizen](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)
 
-**Configuration file**: [`.czrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.czrc).
+**Configuration file**: [`.czrc`](https://github.com/ahelord/nest-boilerplate/blob/master/.czrc).
 
 ---
 
@@ -127,7 +126,7 @@ Use `git cz` instead of `git commit` to use commitizen.
 
 [commitlint](https://github.com/conventional-changelog/commitlint) checks if your commit messages meet the [conventional commit format](https://conventionalcommits.org).
 
-**Configuration file**: [`.commitlintrc.json`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.commitlintrc.json).
+**Configuration file**: [`.commitlintrc.json`](https://github.com/ahelord/nest-boilerplate/blob/master/.commitlintrc.json).
 
 In general the pattern mostly looks like this:
 
@@ -141,7 +140,7 @@ Are you a good `commitizen` ?
 
 ### Docker Compose
 
-**Compose file**: [`docker-compose.yml`](https://github.com/smarlhens/nest7-boilerplate/blob/master/docker-compose.yml).
+**Compose file**: [`docker-compose.yml`](https://github.com/ahelord/nest-boilerplate/blob/master/docker-compose.yml).
 
 Containers :
 
@@ -156,7 +155,7 @@ Compose file uses `.env`.
 
 [ESLint](https://eslint.org/) is a fully pluggable tool for identifying and reporting on patterns in JavaScript.
 
-**Configuration file**: [`.eslintrc.js`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.eslintrc.js).
+**Configuration file**: [`.eslintrc.js`](https://github.com/ahelord/nest-boilerplate/blob/master/.eslintrc.js).
 
 For more configuration options and details, see the [configuration docs](https://eslint.org/docs/user-guide/configuring).
 
@@ -167,7 +166,7 @@ For more configuration options and details, see the [configuration docs](https:/
 
 [Husky](https://github.com/typicode/husky) is a package that helps you create Git hooks easily.
 
-**Configuration folder**: [`.husky`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.husky/).
+**Configuration folder**: [`.husky`](https://github.com/ahelord/nest-boilerplate/blob/master/.husky/).
 
 ---
 
@@ -175,7 +174,7 @@ For more configuration options and details, see the [configuration docs](https:/
 
 [Lint-staged](https://github.com/okonet/lint-staged) is a Node.js script that allows you to run arbitrary scripts against currently staged files.
 
-**Configuration file**: [`.lintstagedrc.json`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.lintstagedrc.json).
+**Configuration file**: [`.lintstagedrc.json`](https://github.com/ahelord/nest-boilerplate/blob/master/.lintstagedrc.json).
 
 ---
 
@@ -183,8 +182,8 @@ For more configuration options and details, see the [configuration docs](https:/
 
 [Prettier](https://prettier.io/) is an opinionated code formatter.
 
-**Configuration file**: [`.prettierrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.prettierrc).  
-**Ignore file**: [`.prettierignore`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.prettierignore).
+**Configuration file**: [`.prettierrc`](https://github.com/ahelord/nest-boilerplate/blob/master/.prettierrc).  
+**Ignore file**: [`.prettierignore`](https://github.com/ahelord/nest-boilerplate/blob/master/.prettierignore).
 
 For more configuration options and details, see the [configuration docs](https://prettier.io/docs/en/configuration.html).
 
@@ -289,4 +288,32 @@ To get more help on the Nest CLI use `nest --help` or go check out the [Nest CLI
 
 ---
 
+### Typeorm migrations
 
+1. Windows
+   ```bash
+   # Create empty migration windows
+    npm run typeorm:migration:create:win --name=createPerson
+
+   # Generate migrations from entities empty migration
+    npm run typeorm:migration:generate:win --name=initMigration
+
+   ```
+2. Unix
+   ```bash
+   # Create empty migration
+    npm run typeorm:migration:create:unix --name=createPerson
+
+   # Generate migrations from entities empty migration
+    npm run typeorm:migration:generate:unix --name=initMigration
+
+   ```
+3. Run migrations and revert
+   ```bash
+   # Run pending migrations
+    npm run typeorm:migration:run
+
+   # Revert migrations
+    npm run typeorm:migration:revert 
+
+   ```
