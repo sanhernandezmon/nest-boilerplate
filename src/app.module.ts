@@ -21,12 +21,6 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
       load: [appConfig],
       envFilePath: '.env',
     }),
-    /*    TypeOrmModule.forRootAsync({
-      useFactory: async function () {
-        console.log(TypeormConfig);
-        return TypeormConfig as TypeOrmModuleOptions;
-      },
-    }),*/
     InfrastructureModule,
     CommonModule,
     TodosModule,
