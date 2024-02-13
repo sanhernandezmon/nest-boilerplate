@@ -10,7 +10,7 @@
     "build": "nest build",
     "eslint:check": "eslint \"{src,apps,libs,test}/**/*.ts\"",
     "eslint:fix": "npm run eslint:check -- --fix",
-    "format": "npx sort-package-json && npm run eslint:fix && npm run prettier:write",
+    "format": "npx -y sort-package-json && npm run eslint:fix && npm run prettier:write",
     "lint": "npm run eslint:check && npm run prettier:check",
     "precommit": "lint-staged && npm run lint && npm run test",
     "prepare": "husky install",
