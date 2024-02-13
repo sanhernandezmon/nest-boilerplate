@@ -73,38 +73,51 @@ What things you need to install the software and how to install them :
    git clone https://github.com/ahelord/nest-boilerplate.git
    ```
 
-1. Go into the project directory
+2. Go into the project directory
 
    ```bash
    cd nest-boilerplate/
    ```
-
-1. Checkout working branch
-
-   ```bash
-   git checkout <branch>
    ```
-
-1. Install NPM dependencies
+3. Install NPM dependencies
 
    ```bash
    npm i
    ```
 
-1. Copy `.env.dist` to `.env`
+
+### Run locally
+
+
+1. Copy `.env-local` to `.env`
 
    ```bash
-   cp .env-example .env
+   cp .env-local .env
    ```
 
-1. Replace the values of the variables with your own
+2. Replace the values of the variables with your own
 
-1. Create Docker images and launch them
+3. Start
+
+   ```bash
+   npm run start:dev
+   ```
+
+### Run docker
+
+1. Copy `.env-docker` to `.env`
+
+   ```bash
+   cp .env-docker .env
+   ```
+
+3. Replace the values of the variables with your own
+
+4. Create Docker images and launch them
 
    ```bash
    docker-compose up -d --build
    ```
-
 ---
 
 ## What's in the box ?
@@ -144,8 +157,8 @@ Are you a good `commitizen` ?
 
 Containers :
 
-- PostgreSQL 14
-- pgAdmin 6
+- PostgreSQL 16.1
+- pgAdmin 4:8.3
 
 Compose file uses `.env`.
 
