@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import { Todos } from '../../../todos/entities/todos.entity';
+import { Todos } from '../entities/todos.entity';
 import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
