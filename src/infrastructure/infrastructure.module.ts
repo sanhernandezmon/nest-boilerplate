@@ -2,9 +2,9 @@ import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { PostgresTypeOrmConfigService } from './database/services/postgres-type-orm-config.service';
-import { TodosRepository } from './database/repositories/todos.repository';
-import { TodosPort } from './ports/todos.port';
-import { TodosMapper } from './mappers/todos.mapper.service';
+import { AnimalRepository } from './database/repositories/animal.repository';
+import { AnimalPort } from './ports/animal.port';
+import { AnimalMapper } from './mappers/animal.mapper.service';
 
 @Global()
 @Module({
@@ -14,7 +14,7 @@ import { TodosMapper } from './mappers/todos.mapper.service';
       useClass: PostgresTypeOrmConfigService,
     }),
   ],
-  providers: [TodosRepository, TodosPort, TodosMapper],
-  exports: [TodosRepository, TodosPort],
+  providers: [AnimalRepository, AnimalPort, AnimalMapper],
+  exports: [AnimalRepository, AnimalPort],
 })
 export class InfrastructureModule {}

@@ -1,4 +1,4 @@
-export abstract class TodosStub {
+export abstract class AnimalStub {
   static repository = {
     findOne: {
       title: 'take break',

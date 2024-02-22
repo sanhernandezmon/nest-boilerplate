@@ -11,7 +11,7 @@ import { AppService } from './app.service';
 // Configs
 import appConfig from './config/app.config';
 import { CommonModule } from './common/common.module';
-import { TodosModule } from './todos/todos.module';
+import { AnimalModule } from './todos/animal.module';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
 
 @Module({
@@ -23,7 +23,7 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
     }),
     InfrastructureModule,
     CommonModule,
-    TodosModule,
+    AnimalModule,
   ],
   controllers: [AppController],
   providers: [AppService],
