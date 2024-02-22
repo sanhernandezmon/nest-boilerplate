@@ -11,7 +11,7 @@ import { AppService } from './app.service';
 // Configs
 import appConfig from './config/app.config';
 import { CommonModule } from './common/common.module';
-import { AnimalModule } from './todos/animal.module';
+import { AnimalModule } from './animal/animal.module';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
 
 @Module({

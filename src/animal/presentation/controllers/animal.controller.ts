@@ -2,13 +2,14 @@ import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/commo
 import { AnimalService } from '../../application/services/animal.service';
 import { CreateAnimalDto } from '../dto/create-animal.dto';
 import { UpdateAnimalDto } from '../dto/update-animal.dto';
+import { AnimalDto } from '../dto/animal.dto';
 
 @Controller('animal')
 export class AnimalController {
   constructor(private readonly animalService: AnimalService) {}
 
   @Post()
-  async postAnimal(@Body() createTodoDto: CreateAnimalDto) {
+  async postAnimal(@Body() createTodoDto: CreateAnimalDto): Promise<AnimalDto> {
     return await this.animalService.createAnimal(createTodoDto);
   }
 

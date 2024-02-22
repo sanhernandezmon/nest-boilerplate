@@ -1,5 +1,5 @@
 import { Mapper } from './mapper';
-import { Animal } from '../../todos/domain/animal';
+import { Animal } from '../../animal/domain/animal';
 import { Injectable } from '@nestjs/common';
 import { AnimalEntity } from '../database/entities/animal.entity';
 

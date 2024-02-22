@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAnimalDto } from '../../presentation/dto/create-animal.dto';
 import { UpdateAnimalDto } from '../../presentation/dto/update-animal.dto';
-import { Animal, AnimalImpl } from '../../domain/animal';
+import { AnimalImpl } from '../../domain/animal';
 import { AnimalRepository } from '../../../infrastructure/database/repositories/animal.repository';
+import { AnimalDto } from '../../presentation/dto/animal.dto';
 
 @Injectable()
 export class AnimalService {
@@ -11,11 +12,12 @@ export class AnimalService {
     private readonly animalImpl: AnimalImpl
   ) {}
 
-  async createAnimal(createAnimalDto: CreateAnimalDto): Promise<Animal> {
+  async createAnimal(createAnimalDto: CreateAnimalDto): Promise<AnimalDto> {
     const animal = await this.animalImpl.create(createAnimalDto.name);
-    console.log(animal.name);
-    console.log(animal.id);
-    return animal;
+    console.log('animal name:', animal.name);
+    console.log('animal id', animal.id);
+
+    return new AnimalDto(animal.name, animal.id);
   }
 
   async findAll() {

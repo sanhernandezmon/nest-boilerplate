@@ -1,4 +1,4 @@
-import { Animal } from '../../todos/domain/animal';
+import { Animal } from '../../animal/domain/animal';
 import { Injectable } from '@nestjs/common';
 import { AnimalRepository } from '../database/repositories/animal.repository';
 import { AnimalEntity } from '../database/entities/animal.entity';
