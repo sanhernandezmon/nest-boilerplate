@@ -1,15 +1,15 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { TodosPort } from '../../infrastructure/ports/todos.port';
 
-export interface Todo {
+export interface Todos {
   title: string;
   id: number;
 }
 @Injectable()
-export class TodoImpl implements Todo {
+export class TodosImpl implements Todos {
   private _title: string;
   private _id: number;
-  @Inject() private readonly todoPort: TodosPort;
+  @Inject() private readonly todosPort: TodosPort;
   get title(): string {
     return this._title;
   }
@@ -30,6 +30,6 @@ export class TodoImpl implements Todo {
 
   async create(title: string) {
     this.title = title;
-    return await this.todoPort.createTodo(title);
+    return await this.todosPort.createTodo(title);
   }
 }

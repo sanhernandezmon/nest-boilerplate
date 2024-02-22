@@ -1,26 +1,26 @@
-import { Todo } from '../../todos/domain/todo';
+import { Todos } from '../../todos/domain/todos';
 import { TodosRepository } from '../database/repositories/todos.repository';
 import { Injectable } from '@nestjs/common';
 import { TodosEntity } from '../database/entities/todos.entity';
-import { TodoMapper } from '../mappers/todo.mapper';
+import { TodosMapper } from '../mappers/todos.mapper.service';
 
 @Injectable()
 export class TodosPort {
   constructor(
     private todosRepository: TodosRepository,
-    private todoMapper: TodoMapper
+    private todosMapper: TodosMapper
   ) {}
 
-  async createTodo(title: string, todosId?: number): Promise<Todo> {
+  async createTodo(title: string, todosId?: number): Promise<Todos> {
     let todoEntity: TodosEntity;
     if (todosId) {
       todoEntity = await this.todosRepository.getInstance().findOne({ where: { id: todosId } });
-      return this.todoMapper.toDomain(todoEntity);
+      return this.todosMapper.toDomain(todoEntity);
     } else {
       todoEntity = await this.todosRepository.getInstance().save({
         title,
       });
-      return this.todoMapper.toDomain(todoEntity);
+      return this.todosMapper.toDomain(todoEntity);
     }
   }
 }

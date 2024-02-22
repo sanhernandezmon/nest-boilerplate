@@ -2,11 +2,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TodosService } from '../application/services/todos.service';
 import { TodosRepository } from '../../infrastructure/database/repositories/todos.repository';
 import { TodosStub } from './stubs/todos.stub';
-import { TodoImpl } from '../domain/todo';
+import { TodosImpl } from '../domain/todos';
 
 /* Mocks */
 type TodosRepositoryMock = Partial<Record<keyof TodosRepository, jest.Mock>>;
-type TodosImplMock = Partial<Record<keyof TodoImpl, jest.Mock>>;
+type TodosImplMock = Partial<Record<keyof TodosImpl, jest.Mock>>;
 
 const todosRepositoryMock = (): TodosRepositoryMock => ({
   getInstance: jest.fn().mockImplementation(() => {
@@ -33,7 +33,7 @@ describe('TodosService', () => {
           useValue: todosRepositoryMock(),
         },
         {
-          provide: TodoImpl,
+          provide: TodosImpl,
           useValue: todosImplMock(),
         },
       ],
