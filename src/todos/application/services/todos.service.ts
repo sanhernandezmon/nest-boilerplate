@@ -14,6 +14,7 @@ export class TodosService {
   async create(createTodoDto: CreateTodoDto): Promise<Todo> {
     const todoInstance = await this.todoImpl.create(createTodoDto.title);
     console.log(todoInstance.title);
+    console.log(todoInstance.id);
     return todoInstance;
   }
 
