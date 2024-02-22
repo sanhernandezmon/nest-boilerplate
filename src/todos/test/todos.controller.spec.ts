@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TodosController } from './todos.controller';
-import { TodosService } from '../services/todos.service';
+import { TodosController } from '../presentation/controllers/todos.controller';
+import { TodosService } from '../application/services/todos.service';
 import { when } from 'jest-when';
 
 /* Stubs */
-import { TodosStub } from '../stubs/todos.stub';
+import { TodosStub } from './stubs/todos.stub';
 
 /* Mocks */
 type TodosServiceMock = Partial<Record<keyof TodosService, jest.Mock>>;

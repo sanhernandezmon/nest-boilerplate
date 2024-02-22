@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TodosService } from './todos.service';
+import { TodosService } from '../application/services/todos.service';
 import { TodosRepository } from '../../infrastructure/database/repositories/todos.repository';
-import { TodosStub } from '../stubs/todos.stub';
+import { TodosStub } from './stubs/todos.stub';
 
 /* Mocks */
 type TodosRepositoryMock = Partial<Record<keyof TodosRepository, jest.Mock>>;
