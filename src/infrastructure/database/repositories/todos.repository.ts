@@ -1,16 +1,16 @@
 import { Repository } from 'typeorm';
-import { Todos } from '../entities/todos.entity';
+import { TodosEntity } from '../entities/todos.entity';
 import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
 @Injectable()
 export class TodosRepository {
-  private instance: Repository<Todos>;
+  private instance: Repository<TodosEntity>;
 
   constructor(private dataSource: DataSource) {
-    this.instance = this.dataSource.getRepository(Todos);
+    this.instance = this.dataSource.getRepository(TodosEntity);
   }
-  public getInstance(): Repository<Todos> {
+  public getInstance(): Repository<TodosEntity> {
     return this.instance;
   }
   public async findCustom() {

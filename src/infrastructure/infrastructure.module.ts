@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { PostgresTypeOrmConfigService } from './database/services/postgres-type-orm-config.service';
 import { TodosRepository } from './database/repositories/todos.repository';
+import { TodosPort } from './ports/todos.port';
 
 @Global()
 @Module({
@@ -12,7 +13,7 @@ import { TodosRepository } from './database/repositories/todos.repository';
       useClass: PostgresTypeOrmConfigService,
     }),
   ],
-  providers: [TodosRepository],
-  exports: [TodosRepository],
+  providers: [TodosRepository, TodosPort],
+  exports: [TodosRepository, TodosPort],
 })
 export class InfrastructureModule {}

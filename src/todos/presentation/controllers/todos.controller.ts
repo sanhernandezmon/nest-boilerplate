@@ -9,7 +9,8 @@ export class TodosController {
 
   @Post()
   async create(@Body() createTodoDto: CreateTodoDto) {
-    return await this.todosService.create(createTodoDto);
+    const todo = await this.todosService.create(createTodoDto);
+    return todo.title;
   }
 
   @Get()
