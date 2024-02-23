@@ -9,7 +9,7 @@ import { AnimalStub } from './stubs/animal.stub';
 /* Mocks */
 type AnimalServiceMock = Partial<Record<keyof AnimalService, jest.Mock>>;
 const animalServiceMock = (): AnimalServiceMock => ({
-  findOne: jest.fn(),
+  getAnimal: jest.fn(),
 });
 describe('AnimalController', () => {
   let controller: AnimalController;
@@ -35,8 +35,8 @@ describe('AnimalController', () => {
   });
   describe('findAll', () => {
     it('I can get one animal', async () => {
-      when(animalServiceMocked.findOne).calledWith(1).mockReturnValue(AnimalStub.repository.findOne);
-      const response = await controller.findOne('1');
+      when(animalServiceMocked.getAnimal).calledWith(1).mockReturnValue(AnimalStub.repository.findOne);
+      const response = await controller.getAnimal('1');
       expect(response).toEqual(AnimalStub.controller.findOne);
     });
   });

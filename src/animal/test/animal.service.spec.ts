@@ -1,36 +1,34 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AnimalService } from '../application/services/animal.service';
-import { AnimalRepository } from '../../infrastructure/database/repositories/animal.repository';
 import { AnimalStub } from './stubs/animal.stub';
 import { AnimalImpl } from '../domain/animal';
+import { AnimalPort } from '../../infrastructure/ports/animal.port';
+import { when } from 'jest-when';
 
 /* Mocks */
-type AnimalRepositoryMock = Partial<Record<keyof AnimalRepository, jest.Mock>>;
 type AnimalImplMock = Partial<Record<keyof AnimalImpl, jest.Mock>>;
-
-const animalRepositoryMock = (): AnimalRepositoryMock => ({
-  getInstance: jest.fn().mockImplementation(() => {
-    return {
-      findOne: jest.fn().mockReturnValue(AnimalStub.repository.findOne),
-    };
-  }),
-  findCustom: jest.fn(),
-});
+type AnimalPortMock = Partial<Record<keyof AnimalPort, jest.Mock>>;
 
 const animalImplMock = (): AnimalImplMock => ({
-  create: jest.fn(),
+  instantiate: jest.fn(),
+  getInstance: jest.fn().mockReturnValue(AnimalStub.repository.findOne),
+});
+
+const animalPortMock = (): AnimalPortMock => ({
+  getAnimal: jest.fn().mockReturnValue(AnimalStub.repository.findOne),
 });
 
 describe('AnimalService', () => {
   let service: AnimalService;
+  let animalMocked: AnimalImplMock;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AnimalService,
         {
-          provide: AnimalRepository,
-          useValue: animalRepositoryMock(),
+          provide: AnimalPort,
+          useValue: animalPortMock(),
         },
         {
           provide: AnimalImpl,
@@ -40,6 +38,7 @@ describe('AnimalService', () => {
     }).compile();
 
     service = module.get<AnimalService>(AnimalService);
+    animalMocked = module.get(AnimalImpl);
   });
 
   it('should be defined', () => {
@@ -48,8 +47,9 @@ describe('AnimalService', () => {
 
   describe('findOne', () => {
     it('I can animal by id', async () => {
-      const response = await service.findOne(1);
-      expect(response).toEqual(AnimalStub.service.findOne);
+      when(animalMocked.getInstance).calledWith(1).mockReturnValue(AnimalStub.port.getInstance);
+      const response = await service.getAnimal(1);
+      expect(response).toEqual(AnimalStub.port.getInstance);
     });
   });
 });
