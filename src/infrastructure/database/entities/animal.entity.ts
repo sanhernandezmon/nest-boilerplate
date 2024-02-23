@@ -1,12 +1,12 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
-export class Todos {
+export class Animal {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  title: string;
+  name: string;
 
   @CreateDateColumn()
   createdAt: Date;

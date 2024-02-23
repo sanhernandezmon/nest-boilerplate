@@ -1,14 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { TodosService } from '../services/todos.service';
-import { CreateTodoDto } from '../dto/create-todo.dto';
-import { UpdateTodoDto } from '../dto/update-todo.dto';
+import { AnimalService } from '../services/animal.service';
+import { CreateAnimalDto } from '../dto/create-animal.dto';
+import { UpdateAnimalDto } from '../dto/update-animal.dto';
 
-@Controller('todos')
-export class TodosController {
-  constructor(private readonly todosService: TodosService) {}
+@Controller('animal')
+export class AnimalController {
+  constructor(private readonly todosService: AnimalService) {}
 
   @Post()
-  async create(@Body() createTodoDto: CreateTodoDto) {
+  async create(@Body() createTodoDto: CreateAnimalDto) {
     return await this.todosService.create(createTodoDto);
   }
 
@@ -23,7 +23,7 @@ export class TodosController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+  update(@Param('id') id: string, @Body() updateTodoDto: UpdateAnimalDto) {
     return this.todosService.update(+id, updateTodoDto);
   }
 

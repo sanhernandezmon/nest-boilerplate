@@ -2,7 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { PostgresTypeOrmConfigService } from './database/services/postgres-type-orm-config.service';
-import { TodosRepository } from './database/repositories/todos.repository';
+import { AnimalRepository } from './database/repositories/animal.repository';
 
 @Global()
 @Module({
@@ -12,7 +12,7 @@ import { TodosRepository } from './database/repositories/todos.repository';
       useClass: PostgresTypeOrmConfigService,
     }),
   ],
-  providers: [TodosRepository],
-  exports: [TodosRepository],
+  providers: [AnimalRepository],
+  exports: [AnimalRepository],
 })
 export class InfrastructureModule {}
