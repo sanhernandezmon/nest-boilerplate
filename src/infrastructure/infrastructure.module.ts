@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { PostgresTypeOrmConfigService } from './database/services/postgres-type-orm-config.service';
 import { AnimalRepository } from './database/repositories/animal.repository';
-import { AnimalPort } from './ports/animal.port';
+import { AnimalPortImpl, animalPortToken } from './ports/animal.port';
 import { AnimalMapper } from './mappers/animal.mapper.service';
 
 @Global()
@@ -14,7 +14,20 @@ import { AnimalMapper } from './mappers/animal.mapper.service';
       useClass: PostgresTypeOrmConfigService,
     }),
   ],
-  providers: [AnimalRepository, AnimalPort, AnimalMapper],
-  exports: [AnimalRepository, AnimalPort],
+  providers: [
+    AnimalRepository,
+    AnimalMapper,
+    {
+      provide: animalPortToken,
+      useClass: AnimalPortImpl,
+    },
+  ],
+  exports: [
+    AnimalRepository,
+    {
+      provide: animalPortToken,
+      useClass: AnimalPortImpl,
+    },
+  ],
 })
 export class InfrastructureModule {}

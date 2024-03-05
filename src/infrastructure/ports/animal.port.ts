@@ -3,8 +3,16 @@ import { Injectable } from '@nestjs/common';
 import { AnimalRepository } from '../database/repositories/animal.repository';
 import { AnimalMapper } from '../mappers/animal.mapper.service';
 
+export const animalPortToken = 'animalPortToken';
+
+export interface AnimalPort {
+  createAnimal: (name: string) => Promise<Animal>;
+  getAnimal: (animalId: number) => Promise<Animal>;
+  updateAnimal: (animalId: number, name: string) => Promise<Animal>;
+}
+
 @Injectable()
-export class AnimalPort {
+export class AnimalPortImpl implements AnimalPort {
   constructor(
     private animalRepository: AnimalRepository,
     private animalMapper: AnimalMapper

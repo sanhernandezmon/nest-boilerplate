@@ -2,12 +2,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AnimalService } from '../application/services/animal.service';
 import { AnimalStub } from './stubs/animal.stub';
 import { AnimalImpl } from '../domain/animal';
-import { AnimalPort } from '../../infrastructure/ports/animal.port';
+import { AnimalPortImpl } from '../../infrastructure/ports/animal.port';
 import { when } from 'jest-when';
 
 /* Mocks */
 type AnimalImplMock = Partial<Record<keyof AnimalImpl, jest.Mock>>;
-type AnimalPortMock = Partial<Record<keyof AnimalPort, jest.Mock>>;
+type AnimalPortMock = Partial<Record<keyof AnimalPortImpl, jest.Mock>>;
 
 const animalImplMock = (): AnimalImplMock => ({
   instantiate: jest.fn(),
@@ -27,7 +27,7 @@ describe('AnimalService', () => {
       providers: [
         AnimalService,
         {
-          provide: AnimalPort,
+          provide: AnimalPortImpl,
           useValue: animalPortMock(),
         },
         {

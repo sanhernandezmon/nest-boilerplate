@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { AnimalPort } from '../../infrastructure/ports/animal.port';
+import { AnimalPort, animalPortToken } from '../../infrastructure/ports/animal.port';
 
 interface Color {
   hex: string;
@@ -23,7 +23,7 @@ export class AnimalImpl implements Animal {
   private _name: string;
   private _id: number;
   private _colors: Color[];
-  @Inject() private readonly animalPort: AnimalPort;
+  @Inject(animalPortToken) private readonly animalPort: AnimalPort;
 
   async instantiate(name: string) {
     this.name = name;
