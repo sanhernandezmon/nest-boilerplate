@@ -12,6 +12,7 @@ import { AppService } from './app.service';
 import appConfig from './config/app.config';
 import { CommonModule } from './common/common.module';
 import { AnimalModule } from './animal/animal.module';
+import { PokemonModule } from './pokemon/pokemon.module';
 import { InfrastructureModule } from './infrastructure/infrastructure.module';
 
 @Module({
@@ -24,6 +25,7 @@ import { InfrastructureModule } from './infrastructure/infrastructure.module';
     InfrastructureModule,
     CommonModule,
     AnimalModule,
+    PokemonModule,
   ],
   controllers: [AppController],
   providers: [AppService],

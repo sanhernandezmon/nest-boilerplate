@@ -5,6 +5,9 @@ import { PostgresTypeOrmConfigService } from './database/services/postgres-type-
 import { AnimalRepository } from './database/repositories/animal.repository';
 import { AnimalPortImpl, animalPortToken } from './ports/animal.port';
 import { AnimalMapper } from './mappers/animal.mapper.service';
+import { PokemonRepository } from './database/repositories/pokemon.repository';
+import { PokemonPortImpl, pokemonPortToken } from './ports/pokemon.port';
+import { PokemonMapper } from './mappers/pokemon.mapper.service';
 
 @Global()
 @Module({
@@ -21,12 +24,23 @@ import { AnimalMapper } from './mappers/animal.mapper.service';
       provide: animalPortToken,
       useClass: AnimalPortImpl,
     },
+    PokemonRepository,
+    PokemonMapper,
+    {
+      provide: pokemonPortToken,
+      useClass: PokemonPortImpl,
+    },
   ],
   exports: [
     AnimalRepository,
     {
       provide: animalPortToken,
       useClass: AnimalPortImpl,
+    },
+    PokemonRepository,
+    {
+      provide: pokemonPortToken,
+      useClass: PokemonPortImpl,
     },
   ],
 })
