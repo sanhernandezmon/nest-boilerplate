@@ -27,13 +27,13 @@ export class PokemonPortImpl implements PokemonPort {
     return this.pokemonMapper.toDomain(pokemonEntity);
   }
 
-  async getPokemon(animalId: number): Promise<Pokemon> {
-    const animalEntity = await this.pokemonRepository.getInstance().findOne({ where: { id: animalId } });
-    return this.pokemonMapper.toDomain(animalEntity);
+  async getPokemon(pokemonId: number): Promise<Pokemon> {
+    const pokemonEntity = await this.pokemonRepository.getInstance().findOne({ where: { id: pokemonId } });
+    return this.pokemonMapper.toDomain(pokemonEntity);
   }
 
   async updatePokemon(pokemonId: number, level: number): Promise<Pokemon> {
-    const pokemonEntity = await this.pokemonRepository.getInstance().save({ id: pokemonId, level });
+    const pokemonEntity = await this.pokemonRepository.getInstance().save({ id: pokemonId, level: level });
     return this.pokemonMapper.toDomain(pokemonEntity);
   }
 }

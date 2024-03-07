@@ -6,7 +6,6 @@ import { PokemonEntity } from '../database/entities/pokemon.entity';
 @Injectable()
 export class PokemonMapper implements Mapper<PokemonEntity, Pokemon> {
   toDomain(entity: PokemonEntity): Pokemon {
-    console.log('entity', entity);
     return { name: entity.name, id: entity.id, type: entity.type, level: entity.level } as Pokemon;
   }
 }
