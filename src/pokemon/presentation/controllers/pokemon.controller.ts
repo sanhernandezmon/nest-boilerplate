@@ -28,7 +28,7 @@ export class PokemonController {
   @ApiResponse({ status: 200, description: 'The Pokemon has been successfully updated.' })
   @ApiParam({ name: 'id', description: 'ID of the Pokemon to update.' })
   @ApiBody({ type: UpdatePokemonDto, description: 'Data required to update the Pokemon.' })
-  async update(@Param('id') id: string, @Body() updateTodoDto: UpdatePokemonDto) {
+  async update(@Param('id') id: number, @Body() updateTodoDto: UpdatePokemonDto) {
     return this.pokemonService.update(+id, updateTodoDto);
   }
 }

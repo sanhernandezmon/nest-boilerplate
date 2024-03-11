@@ -2,9 +2,6 @@ import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { PostgresTypeOrmConfigService } from './database/services/postgres-type-orm-config.service';
-import { AnimalRepository } from './database/repositories/animal.repository';
-import { AnimalPortImpl, animalPortToken } from './ports/animal.port';
-import { AnimalMapper } from './mappers/animal.mapper.service';
 import { PokemonRepository } from './database/repositories/pokemon.repository';
 import { PokemonPortImpl, pokemonPortToken } from './ports/pokemon.port';
 import { PokemonMapper } from './mappers/pokemon.mapper.service';
@@ -18,12 +15,6 @@ import { PokemonMapper } from './mappers/pokemon.mapper.service';
     }),
   ],
   providers: [
-    AnimalRepository,
-    AnimalMapper,
-    {
-      provide: animalPortToken,
-      useClass: AnimalPortImpl,
-    },
     PokemonRepository,
     PokemonMapper,
     {
@@ -32,11 +23,6 @@ import { PokemonMapper } from './mappers/pokemon.mapper.service';
     },
   ],
   exports: [
-    AnimalRepository,
-    {
-      provide: animalPortToken,
-      useClass: AnimalPortImpl,
-    },
     PokemonRepository,
     {
       provide: pokemonPortToken,

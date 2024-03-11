@@ -27,6 +27,10 @@ export abstract class PokemonStub {
       level: 23,
       type: 'electric',
     },
+    updateDto: {
+      id: 1,
+      level: 24,
+    },
   };
   static service = {
     findOne: this.repository.findOne,
@@ -36,5 +40,8 @@ export abstract class PokemonStub {
   };
   static controller = {
     findOne: this.service.findOne,
+    updateDto: {
+      level: 24,
+    },
   };
 }
