@@ -39,8 +39,8 @@ describe('PokemonPortImpl', () => {
   describe('getPokemon', () => {
     it('should get an existing Pokemon', async () => {
       // Arrange
-      const pokemonId = 1;
-      const mockPokemonEntity = PokemonStub.repository.instance;
+      const pokemonId = PokemonStub.params.id;
+      const mockPokemonEntity = PokemonStub.port.getPokemon;
       pokemonRepositoryMock.getInstance().findOne = jest.fn().mockResolvedValue(mockPokemonEntity);
       pokemonMapperMock.toDomain = jest.fn().mockReturnValue(mockPokemonEntity);
 
@@ -57,8 +57,8 @@ describe('PokemonPortImpl', () => {
   describe('createPokemon', () => {
     it('should create a new Pokemon', async () => {
       // Arrange
-      const toCreate = PokemonStub.repository.dto;
-      const mockPokemonEntity = PokemonStub.repository.instance;
+      const toCreate = PokemonStub.params.create;
+      const mockPokemonEntity = PokemonStub.port.createPokemon;
       pokemonRepositoryMock.getInstance().save = jest.fn().mockResolvedValue(mockPokemonEntity);
       pokemonMapperMock.toDomain = jest.fn().mockReturnValue(mockPokemonEntity);
 
@@ -79,8 +79,8 @@ describe('PokemonPortImpl', () => {
   describe('updatePokemon', () => {
     it('should update the level of an existing Pokemon', async () => {
       // Arrange
-      const updateDto = PokemonStub.repository.updateDto;
-      const mockPokemonEntity = PokemonStub.repository.findUpdated;
+      const updateDto = PokemonStub.params.update;
+      const mockPokemonEntity = PokemonStub.port.update;
       pokemonRepositoryMock.getInstance().save = jest.fn().mockResolvedValue(mockPokemonEntity);
       pokemonMapperMock.toDomain = jest.fn().mockReturnValue(mockPokemonEntity);
 

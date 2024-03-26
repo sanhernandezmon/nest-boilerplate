@@ -17,9 +17,9 @@ describe('PokemonMapper', () => {
   });
 
   it('should map PokemonEntity to Pokemon', () => {
-    const pokemonEntity = PokemonStub.repository.findOne;
+    const pokemonEntity = PokemonStub.mapper.entity;
     const result = mapper.toDomain(pokemonEntity);
     expect(result).toBeDefined();
-    expect(result).toEqual(PokemonStub.port.getInstance);
+    expect(result).toEqual(PokemonStub.mapper.domain);
   });
 });

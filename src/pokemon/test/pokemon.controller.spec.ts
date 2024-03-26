@@ -35,34 +35,33 @@ describe('PokemonController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
-  describe('findAll', () => {
-    it('I can get one pokemon', async () => {
+  describe('should get a Pokemon', () => {
+    it('I can get one pokemon correctly', async () => {
       when(pokemonServiceMocked.getPokemon).calledWith(1).mockReturnValue(PokemonStub.repository.findOne);
       const response = await controller.getPokemon('1');
-      expect(response).toEqual(PokemonStub.controller.findOne);
+      expect(response).toEqual(PokemonStub.controller.getPokemon);
     });
   });
+  //TODO agregar caso con falla I cannot get an unexistant pokemon
 
-  describe('createPokemon', () => {
-    it('should create a new Pokemon', async () => {
-      const createPokemonDto = PokemonStub.repository.dto;
+  describe('should create a Pokemon', () => {
+    it('should create a new Pokemon with correct params', async () => {
+      const createPokemonDto = PokemonStub.params.create;
       when(pokemonServiceMocked.createPokemon)
         .calledWith(createPokemonDto)
-        .mockReturnValue(PokemonStub.repository.findOne);
+        .mockReturnValue(PokemonStub.controller.ceratePokemon);
       const response = await controller.createPokemon(createPokemonDto);
-      expect(response).toEqual(PokemonStub.controller.findOne);
+      expect(response).toEqual(PokemonStub.controller.ceratePokemon);
     });
   });
 
-  describe('update', () => {
+  describe('should update a pokemon', () => {
     it('should update an existing Pokemon', async () => {
-      const updatePokemonDto = PokemonStub.controller.updateDto;
+      const updatePokemonDto = PokemonStub.params.update;
       const id = 1;
-      when(pokemonServiceMocked.update)
-        .calledWith(id, updatePokemonDto)
-        .mockReturnValue(PokemonStub.repository.findUpdated);
+      when(pokemonServiceMocked.update).calledWith(id, updatePokemonDto).mockReturnValue(PokemonStub.controller.update);
       const response = await controller.update(1, updatePokemonDto);
-      expect(response).toEqual(PokemonStub.repository.findUpdated);
+      expect(response).toEqual(PokemonStub.controller.update);
     });
   });
 });

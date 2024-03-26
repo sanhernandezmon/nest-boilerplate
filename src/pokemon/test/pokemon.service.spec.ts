@@ -8,9 +8,9 @@ import { when } from 'jest-when';
 type PokemonImplMock = Partial<Record<keyof PokemonImpl, jest.Mock>>;
 
 const pokemonImplMock = (): PokemonImplMock => ({
-  instantiate: jest.fn().mockReturnValue(PokemonStub.repository.findOne),
-  update: jest.fn().mockReturnValue(PokemonStub.repository.findUpdated),
-  getInstance: jest.fn().mockReturnValue(PokemonStub.repository.findOne),
+  instantiate: jest.fn().mockReturnValue(PokemonStub.domain.instantiate),
+  update: jest.fn().mockReturnValue(PokemonStub.service.update),
+  getInstance: jest.fn().mockReturnValue(PokemonStub.domain.getInstance),
 });
 
 describe('PokemonService', () => {
@@ -38,28 +38,27 @@ describe('PokemonService', () => {
 
   describe('getPokemon', () => {
     it('I can find pokemon by id', async () => {
-      when(pokemonMocked.getInstance).calledWith(1).mockReturnValue(PokemonStub.port.getInstance);
+      when(pokemonMocked.getInstance).calledWith(1).mockReturnValue(PokemonStub.service.getPokemon);
       const response = await service.getPokemon(1);
-      expect(response).toEqual(PokemonStub.port.getInstance);
+      expect(response).toEqual(PokemonStub.service.getPokemon);
     });
   });
 
   describe('createPokemon', () => {
     it('should create a new pokemon and return a PokemonDto', async () => {
-      const createPokemonDto = PokemonStub.repository.dto;
+      const createPokemonDto = PokemonStub.params.create;
       when(pokemonMocked.instantiate)
         .calledWith(createPokemonDto.name, createPokemonDto.type, createPokemonDto.level)
-        .mockReturnValue(PokemonStub.port.getInstance);
+        .mockReturnValue(PokemonStub.service.ceratePokemon);
       const result = await service.createPokemon(createPokemonDto);
-      expect(result).toEqual(PokemonStub.port.getInstance);
+      expect(result).toEqual(PokemonStub.service.ceratePokemon);
     });
   });
-
-  describe('update', () => {
+  -describe('update', () => {
     it('should update a pokemon by id', async () => {
-      const id = 1;
-      const updateTodoDto = { level: 24 };
-      const updatedPokemon = PokemonStub.repository.findUpdated;
+      const id = PokemonStub.params.id;
+      const updateTodoDto = PokemonStub.params.update;
+      const updatedPokemon = PokemonStub.service.update;
       when(pokemonMocked.update).calledWith(id, updateTodoDto.level).mockReturnValue(updatedPokemon);
       const result = await service.update(id, updateTodoDto);
       expect(result.level).toBe(updateTodoDto.level);

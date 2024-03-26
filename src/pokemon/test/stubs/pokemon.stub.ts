@@ -1,4 +1,16 @@
 export abstract class PokemonStub {
+  static params = {
+    id: 1,
+    create: {
+      name: 'pikachu',
+      level: 23,
+      type: 'electric',
+    },
+    update: {
+      id: 1,
+      level: 24,
+    },
+  };
   static repository = {
     findOne: {
       name: 'pikachu',
@@ -8,7 +20,18 @@ export abstract class PokemonStub {
       createdAt: new Date('2022-05-26T09:02:51.438Z'),
       updatedAt: new Date('2022-05-26T09:02:51.438Z'),
     },
-    findUpdated: {
+    instance: {
+      name: 'pikachu',
+      id: 1,
+      level: 23,
+      type: 'electric',
+    },
+  };
+
+  static port = {
+    createPokemon: this.repository.instance,
+    getPokemon: this.repository.findOne,
+    update: {
       name: 'pikachu',
       id: 1,
       type: 'electric',
@@ -16,32 +39,31 @@ export abstract class PokemonStub {
       createdAt: new Date('2022-05-26T09:02:51.438Z'),
       updatedAt: new Date('2022-05-26T09:02:51.438Z'),
     },
-    instance: {
+  };
+  static domain = {
+    instantiate: this.repository.findOne,
+    getInstance: this.repository.instance,
+    updated: {
       name: 'pikachu',
       id: 1,
-      level: 23,
       type: 'electric',
-    },
-    dto: {
-      name: 'pikachu',
-      level: 23,
-      type: 'electric',
-    },
-    updateDto: {
-      id: 1,
       level: 24,
+      createdAt: new Date('2022-05-26T09:02:51.438Z'),
+      updatedAt: new Date('2022-05-26T09:02:51.438Z'),
     },
   };
   static service = {
-    findOne: this.repository.findOne,
-  };
-  static port = {
-    getInstance: this.repository.instance,
+    ceratePokemon: this.repository.instance,
+    getPokemon: this.repository.instance,
+    update: this.domain.updated,
   };
   static controller = {
-    findOne: this.service.findOne,
-    updateDto: {
-      level: 24,
-    },
+    ceratePokemon: this.repository.findOne,
+    getPokemon: this.repository.findOne,
+    update: this.domain.updated,
+  };
+  static mapper = {
+    entity: this.repository.findOne,
+    domain: this.domain.getInstance,
   };
 }
